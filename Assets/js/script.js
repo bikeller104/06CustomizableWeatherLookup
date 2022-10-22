@@ -49,6 +49,19 @@ function fetchWeather(lat,lon)
         return response.json();
     })
     .then(function (data){
-        console.log(data);
+        //console.log(JSON.stringify(data, null, 4));
+        // data.list.forEach(entry => {
+        //     console.log(JSON.stringify(entry,null,4));
+        // });
+        console.log(JSON.stringify(data.list[0],null,4));
+        console.log(data.list[0].dt_txt);
+        console.log(data.list[1].dt_txt);
+        console.log(data.list[2].dt_txt);
+        console.log(data.list[3].dt_txt);
+        console.log(data.list[4].dt_txt);
+        console.log(data.list[5].dt_txt);
+        //this is the 6th day in the future dont need this
+        console.log(data.list[6].dt_txt);
+
     })
 }
