@@ -9,6 +9,7 @@ var testCity = "Salt Lake City";
 
 console.log("script works");
 createGEOAPIRequest(testCity)
+requestWeather(testCity);
 
 //this function takes a city name and returns the 5 day forecast for that city
 function requestWeather(cityName)
@@ -16,7 +17,11 @@ function requestWeather(cityName)
     fetch(createGEOAPIRequest(cityName))
     .then(function (response){
         return response.json();
-    }).then()
+    }).then(function (data){
+        console.log(data);
+        console.log(data[0].lat);
+        console.log(data[0].lon);
+    })
 }
 /*
     take the city name and create a geo api call to return the
