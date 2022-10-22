@@ -21,6 +21,7 @@ function requestWeather(cityName)
         console.log(data);
         console.log(data[0].lat);
         console.log(data[0].lon);
+        fetchWeather(data[0].lat, data[0].lon);
     })
 }
 /*
@@ -37,4 +38,17 @@ function createGEOAPIRequest(cityName, limit = 1)
 function createWeatherAPIRequest(lattitued, longitude)
 {
     let request = `https://${openWeatheraddr}/${getWeatherheader}?lat=${lattitued}&lon=${longitude}&appid=${apiKey}&units=${units}`
+    console.log(request);
+    return request;
+}
+
+function fetchWeather(lat,lon)
+{
+    fetch(createWeatherAPIRequest(lat,lon))
+    .then(function(response){
+        return response.json();
+    })
+    .then(function (data){
+        console.log(data);
+    })
 }
