@@ -79,11 +79,20 @@ function fetchWeather(lat,lon)
         // console.log("***************************");
         //this retrieves the noon time weather for 
         //the next five days
-        for(let i = data.list.length -1-2; i >0; i-=8)
+        $(".weather_data").remove();
+        let $weatherData = $('<div>');
+        $weatherData.addClass('weather_data');
+
+        console.log($weatherData);
+        //for(let i = data.list.length -1-2; i >0; i-=8)
+        for(let i =0 ; i <data.list.length -1-2; i+=8)
         {
-            //console.log(data.list[i].dt_txt);
-            $('main').append(designHTMLfordata(data.list[i]));
+            console.log(data.list[i].dt_txt);
+            
+            $weatherData.append(designHTMLfordata(data.list[i]));
         }
+        $('main').append($weatherData);
+        
 
     })
 }
@@ -94,8 +103,9 @@ function fetchWeather(lat,lon)
 function designHTMLfordata(dataEntry)
 {
 
-    //console.log(JSON.stringify(dataEntry, null, 2));
+    console.log(JSON.stringify(dataEntry, null, 2));
     let $card = $(`<div>`);
+    $card.addClass('weather_card');
     
     
     //date
